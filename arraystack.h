@@ -1,6 +1,7 @@
 #ifndef ARRAYSTACK_H
 #define ARRAYSTACK_H
 #include "array.h"
+#include "utils.h"
 template<class T>
 class DualArrayDeque;
 
@@ -52,16 +53,39 @@ T ArrayStack<T>::set(int i,T x){
 }
 template<class T>
 void ArrayStack<T>::add (int i, T x){
-
+    if(n+1 > a.length) resize();
+    for(int j = n;j>i;j--){
+        a[j] = a[j-1];
+    }
+    a[i] = x;
+    n++;
 }
 
 template<class T>
 T ArrayStack<T>::remove(int i){
-    return a[i];
+    T x = a[i];
+    for(int j = i;j<n-1;j++){
+        a[j] = a[j+1];
+    }
+    n --;
+    if(a.length >= 3*n) resize();
+    return x;
 }
 template<class T>
 void ArrayStack<T>::clear(){
-    return ;
+    n = 0;
+    Array<T> b(1);
+    a = b;
 }
 
+template<class T>
+void ArrayStack<T>::resize(){
+    Array<T> b(max(2*n,1));
+    for(int i = 0;i<n;i++){
+        b[i] = a[i];
+    }
+    a = b;
+}
+
+void testArrayStack();
 #endif // ARRAYSTACK_H

@@ -27,7 +27,7 @@ inline unsigned intVal(int x){
     return (unsigned)x;
 }
 
-int hashCode(int x){
+inline int hashCode1(int x){
     return 0;
 }
 #endif // UTILS_H

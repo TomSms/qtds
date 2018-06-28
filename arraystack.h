@@ -1,6 +1,6 @@
 #ifndef ARRAYSTACK_H
 #define ARRAYSTACK_H
-
+#include "array.h"
 template<class T>
 class DualArrayDeque;
 
@@ -54,11 +54,14 @@ template<class T>
 void ArrayStack<T>::add (int i, T x){
 
 }
+
 template<class T>
-void ArrayStack<T>::add(T x) { add(size(),x); }
+T ArrayStack<T>::remove(int i){
+    return a[i];
+}
 template<class T>
-T ArrayStack<T>::remove(int i);
-template<class T>
-void ArrayStack<T>::clear();
+void ArrayStack<T>::clear(){
+    return ;
+}
 
 #endif // ARRAYSTACK_H
